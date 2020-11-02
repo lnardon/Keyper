@@ -49,7 +49,10 @@ export default function Login() {
             firebase
               .auth()
               .signInWithEmailAndPassword(username, password)
-              .then(() => router.push("/homepage"))
+              .then((data) => {
+                localStorage.setItem("@userId", data.user.uid);
+                router.push("/homepage");
+              })
               .catch((err) => alert(err))
           }
         >
