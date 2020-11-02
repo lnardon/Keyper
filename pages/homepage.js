@@ -5,8 +5,10 @@ import firebase from "../public/firebase";
 import styles from "../styles/Homepage.module.css";
 
 export default function Homepage() {
-  const userId = localStorage.getItem("@userId");
-  const dataRef = firebase.database().ref("users/" + userId);
+  useEffect(() => {
+    const userId = localStorage.getItem("@userId");
+    const dataRef = firebase.database().ref("users/" + userId);
+  }, []);
 
   return (
     <div className={styles.homepageContainer}>
