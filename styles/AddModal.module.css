@@ -1,0 +1,25 @@
+.addModalContainer {
+  width: calc(100% - 2rem);
+  height: 150px;
+  background-color: #fafafa;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  animation: modalAppear 0.5s ease-out forwards;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
