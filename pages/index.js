@@ -62,6 +62,9 @@ export default function Login() {
         >
           Login
         </button>
+        <a href="/signup" className={styles.createAccountLink}>
+          Create Account
+        </a>
       </div>
     </div>
   );

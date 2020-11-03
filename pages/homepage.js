@@ -24,7 +24,7 @@ export default function Homepage() {
   }, []);
 
   function createBookmark(folderName, obj) {
-    const newFolders = fodlers[]
+    // const newFolders = fodlers[]
     dataRef
       .ref(`users/${userId}/folders/`)
       .set([folders, { name: folderName, bookmarks: obj }]);

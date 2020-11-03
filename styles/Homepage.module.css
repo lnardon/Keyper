@@ -5,6 +5,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: url(https://images.unsplash.com/photo-1520262454473-a1a82276a574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  background-size: cover;
 }
 
 .homepageContent {
@@ -35,4 +37,8 @@
   cursor: pointer;
   font-size: 2rem;
   font-weight: 900;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
