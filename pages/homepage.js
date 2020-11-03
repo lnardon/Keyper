@@ -3,12 +3,19 @@ import Head from "next/head";
 import firebase from "../public/firebase";
 
 import styles from "../styles/Homepage.module.css";
+import Foldercard from "../components/Foldercard";
 
 export default function Homepage() {
   const [addModal, setAddModal] = useState(false);
+  const [folders, setFolders] = useState([]);
+
   useEffect(() => {
     const userId = localStorage.getItem("@userId");
-    const dataRef = firebase.database().ref("users/" + userId);
+    const dataRef = firebase.database();
+
+    dataRef.ref(`users/${userId}/folders`).on("value", (snap) => {
+      setFolders(snap.val());
+    });
   }, []);
 
   return (
@@ -17,8 +24,11 @@ export default function Homepage() {
         <title>Keyper</title>
       </Head>
       <div className={styles.homepageContent}>
-        <h1 className={styles.title}>Homepage</h1>
-        {addModal ? "open" : "closed"}
+        {folders.map((folder) => {
+          return <Foldercard title={folder.name} />;
+        })}
+
+        {addModal && <AddModal />}
         <button
           className={styles.addBtn}
           onClick={() => setAddModal(!addModal)}
