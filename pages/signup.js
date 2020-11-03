@@ -22,7 +22,7 @@ export default function Login() {
       <span className={styles.pathTop}></span>
       <span className={styles.pathBottom}></span>
       <div className={styles.loginDiv}>
-        <h1 className={styles.title}>Login</h1>
+        <h1 className={styles.title}>Sign Up</h1>
         <div className={styles.loginForm}>
           <div className={styles.inputDiv}>
             <label htmlFor="username"></label>
@@ -50,7 +50,7 @@ export default function Login() {
           onClick={() =>
             firebase
               .auth()
-              .signInWithEmailAndPassword(username, password)
+              .createUserWithEmailAndPassword(username, password)
               .then((data) => {
                 if (typeof window !== "undefined") {
                   localStorage.setItem("@userId", data.user.uid);
@@ -60,7 +60,7 @@ export default function Login() {
               .catch((err) => alert(err))
           }
         >
-          Login
+          Sign Up
         </button>
       </div>
     </div>

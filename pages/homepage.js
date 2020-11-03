@@ -13,10 +13,10 @@ export default function Homepage() {
   return (
     <div className={styles.homepageContainer}>
       <Head>
-        <title>Keyper Homepage</title>
+        <title>Keyper</title>
       </Head>
       <div>
-        <h1>Homepage</h1>
+        <h1 className={styles.title}>Homepage</h1>
       </div>
     </div>
   );
