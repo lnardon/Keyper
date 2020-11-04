@@ -1,0 +1,19 @@
+.headerContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  height: 1.25rem;
+  margin-right: 0.5rem;
+}
+
+.headerTitle {
+  margin: 0;
+  color: #fafafa;
+  font-size: 1.25rem;
+  font-weight: 700;
+}

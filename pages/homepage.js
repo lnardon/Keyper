@@ -3,6 +3,7 @@ import Head from "next/head";
 import firebase from "../public/firebase";
 
 import styles from "../styles/Homepage.module.css";
+import Header from "../components/Header";
 import Foldercard from "../components/Foldercard";
 import AddFolderModal from "../components/AddFolderModal";
 import AddBookmarkModal from "../components/AddBookmarkModal";
@@ -44,6 +45,7 @@ export default function Homepage() {
       auxFolders[selectedFolder].bookmarks = [bookmark];
     }
     dataRef.ref(`users/${userId}/folders/`).set(auxFolders);
+    setAddBookmarkModal(false);
   }
 
   return (
@@ -54,6 +56,7 @@ export default function Homepage() {
             <title>Keyper</title>
           </Head>
           <div className={styles.homepageContent}>
+            <Header />
             {folders.map((folder, index) => {
               return (
                 <Foldercard
