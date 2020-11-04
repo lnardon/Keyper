@@ -4,7 +4,8 @@ import firebase from "../public/firebase";
 
 import styles from "../styles/Homepage.module.css";
 import Foldercard from "../components/Foldercard";
-import AddModal from "../components/AddModal";
+import AddFolderModal from "../components/AddFolderModal";
+import Folder from "../components/Folder";
 
 export default function Homepage() {
   let userId;
@@ -13,7 +14,7 @@ export default function Homepage() {
     userId = localStorage.getItem("@userId");
     dataRef = firebase.database();
   }
-  const [addModal, setAddModal] = useState(false);
+  const [addFolderModal, setAddFolderModal] = useState(false);
   const [folders, setFolders] = useState([]);
 
   useEffect(() => {
@@ -23,31 +24,36 @@ export default function Homepage() {
     });
   }, []);
 
-  function createBookmark(folderName, obj) {
-    // const newFolders = fodlers[]
+  function createFolder(folderName) {
     dataRef
       .ref(`users/${userId}/folders/`)
-      .set([folders, { name: folderName, bookmarks: obj }]);
+      .set([...folders, { title: folderName }]);
+    setAddFolderModal(false);
   }
 
   return (
-    <div className={styles.homepageContainer}>
-      <Head>
-        <title>Keyper</title>
-      </Head>
-      <div className={styles.homepageContent}>
-        {folders.map((folder) => {
-          return <Foldercard title={folder.name} />;
-        })}
+    <>
+      {folders.length > 1 ? (
+        <div className={styles.homepageContainer}>
+          <Head>
+            <title>Keyper</title>
+          </Head>
+          <div className={styles.homepageContent}>
+            {folders.map((folder) => {
+              return <Foldercard title={folder.title} />;
+            })}
 
-        {addModal ? <AddModal createBookmark={createBookmark} /> : null}
-        <button
-          className={styles.addBtn}
-          onClick={() => setAddModal(!addModal)}
-        >
-          +
-        </button>
-      </div>
-    </div>
+            {addFolderModal && <AddFolderModal createFolder={createFolder} />}
+            <Folder title={folders[0].title} bookmarks={folders[0].bookmarks} />
+            <button
+              className={styles.addBtn}
+              onClick={() => setAddFolderModal(!addFolderModal)}
+            >
+              +
+            </button>
+          </div>
+        </div>
+      ) : null}
+    </>
   );
 }
