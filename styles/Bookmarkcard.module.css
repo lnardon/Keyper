@@ -1,0 +1,19 @@
+.foldercardContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #fafafa;
+  border-radius: 0.25rem;
+  padding: 0.25rem 0rem;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+}
+
+.favicon {
+  margin: 0rem 0.5rem;
+}
+
+.foldercardTitle {
+  margin: 0;
+  font-size: 1rem;
+}

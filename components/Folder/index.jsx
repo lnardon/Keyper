@@ -9,7 +9,7 @@ function Folder({ title, bookmarks }) {
   }
   return (
     <div className={styles.folderContainer}>
-      <h1>{title}</h1>
+      <h1 className={styles.folderTitle}>{title}</h1>
       {bookmarks &&
         bookmarks.map((bookmark, index) => {
           return (
