@@ -1,6 +1,5 @@
 .addModalContainer {
   width: calc(100% - 2rem);
-  height: 150px;
   background-color: #fafafa;
   transform: translate(-50%, -50%);
   position: absolute;
@@ -10,9 +9,41 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   z-index: 10;
   animation: modalAppear 0.5s ease-out forwards;
+  padding: 0.5rem 0rem;
+}
+
+.title {
+  font-size: 1.5rem;
+}
+
+.inputLabel {
+  width: 80%;
+  font-weight: 500;
+}
+
+.input {
+  width: 80%;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #5200ff;
+  margin-bottom: 1rem;
+  outline: none;
+  font-size: 1rem;
+}
+
+.createBtn {
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background-color: #5200ff;
+  padding: 0.25rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #fafafa;
+  border-radius: 0.25rem;
+  margin-bottom: 1rem;
 }
 
 @keyframes modalAppear {

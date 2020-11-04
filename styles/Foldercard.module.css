@@ -7,6 +7,12 @@
   display: flex;
   align-items: center;
   padding: 0rem 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.foldercardContainer:hover {
+  background-color: #5100ff;
+  color: #fafafa;
 }
 
 .foldercardTitle {
