@@ -34,6 +34,10 @@ export default function Homepage() {
     setAddFolderModal(false);
   }
 
+  function deleteFolder(index) {
+    dataRef.ref(`users/${userId}/folders/${index}`).remove();
+  }
+
   function createBookmark(bookmark) {
     let auxFolders = folders;
     if (auxFolders[selectedFolder].bookmarks) {
@@ -63,6 +67,7 @@ export default function Homepage() {
                   title={folder.title}
                   onClick={() => setSelectedFolder(index)}
                   index={index}
+                  deleteBtn={() => deleteFolder(index)}
                 />
               );
             })}
@@ -73,8 +78,9 @@ export default function Homepage() {
             )}
             {selectedFolder !== null && (
               <Folder
-                title={folders[selectedFolder].title}
-                bookmarks={folders[selectedFolder].bookmarks}
+                folder={folders[selectedFolder]}
+                folderIndex={selectedFolder}
+                dataRef={dataRef}
               />
             )}
             <button
