@@ -28,9 +28,9 @@ export default function Homepage() {
   }, []);
 
   function createFolder(folderName) {
-    dataRef
-      .ref(`users/${userId}/folders/`)
-      .set([...folders, { title: folderName, bookmarks: [] }]);
+    let newFolders = folders;
+    newFolders.push({ title: folderName, bookmarks: [] });
+    dataRef.ref(`users/${userId}/folders`).set(newFolders);
     setAddFolderModal(false);
   }
 

@@ -5,7 +5,7 @@ function Bookmarkcard({ title, url, deleteBtn }) {
   return (
     <div
       className={styles.foldercardContainer}
-      // onClick={() => window.open(url)}
+      onClick={() => window.open(url)}
     >
       <img
         src={`https://s2.googleusercontent.com/s2/favicons?domain=${url}`}
