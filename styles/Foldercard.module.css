@@ -8,6 +8,8 @@
   align-items: center;
   padding: 0rem 0.5rem;
   margin-bottom: 0.75rem;
+  /* animation: appear 0.9s ease forwards; */
+  overflow: hidden;
 }
 
 .foldercardContainer:hover {
@@ -25,4 +27,16 @@
   right: 1.75rem;
   position: absolute;
   cursor: pointer;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    width: 0%;
+  }
+
+  to {
+    opacity: 1;
+    width: 100%;
+  }
 }

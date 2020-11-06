@@ -5,9 +5,9 @@
   background-color: #fafafa;
   border-radius: 0.25rem;
   padding: 0.25rem 0rem;
-  cursor: pointer;
   margin-bottom: 0.5rem;
   position: relative;
+  animation: appear 0.5s ease forwards;
 }
 
 .favicon {
@@ -24,4 +24,16 @@
   right: 1rem;
   position: absolute;
   cursor: pointer;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
 }

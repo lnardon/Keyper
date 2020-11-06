@@ -9,7 +9,10 @@ function Foldercard({ title, onClick, deleteBtn }) {
         src={close}
         alt="delete"
         className={styles.deleteBtn}
-        onClick={deleteBtn}
+        onClick={(e) => {
+          e.stopPropagation();
+          deleteBtn();
+        }}
       />
     </div>
   );
