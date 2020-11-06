@@ -35,6 +35,9 @@ export default function Homepage() {
   }
 
   function deleteFolder(index) {
+    let newFolders = folders;
+    newFolders.splice(index, 1);
+    setFolders(newFolders);
     dataRef.ref(`users/${userId}/folders/${index}`).remove();
   }
 
@@ -60,29 +63,39 @@ export default function Homepage() {
             <title>Keyper</title>
           </Head>
           <div className={styles.homepageContent}>
-            <Header />
-            {folders.map((folder, index) => {
-              return (
-                <Foldercard
-                  title={folder.title}
-                  onClick={() => setSelectedFolder(index)}
-                  index={index}
-                  deleteBtn={() => deleteFolder(index)}
+            <Header
+              showBackBtn={selectedFolder !== null}
+              backBtn={() => setSelectedFolder(null)}
+            />
+            {selectedFolder === null && (
+              <div>
+                {folders.map((folder, index) => {
+                  return (
+                    <Foldercard
+                      title={folder.title}
+                      onClick={() => setSelectedFolder(index)}
+                      index={index}
+                      deleteBtn={() => deleteFolder(index)}
+                    />
+                  );
+                })}
+                {addFolderModal && (
+                  <AddFolderModal createFolder={createFolder} />
+                )}
+              </div>
+            )}
+            <div>
+              {addBookmarkModal && (
+                <AddBookmarkModal createBookmark={createBookmark} />
+              )}
+              {selectedFolder !== null && (
+                <Folder
+                  folder={folders[selectedFolder]}
+                  folderIndex={selectedFolder}
+                  dataRef={dataRef}
                 />
-              );
-            })}
-
-            {addFolderModal && <AddFolderModal createFolder={createFolder} />}
-            {addBookmarkModal && (
-              <AddBookmarkModal createBookmark={createBookmark} />
-            )}
-            {selectedFolder !== null && (
-              <Folder
-                folder={folders[selectedFolder]}
-                folderIndex={selectedFolder}
-                dataRef={dataRef}
-              />
-            )}
+              )}
+            </div>
             <button
               className={styles.addBtn}
               onClick={() => {
