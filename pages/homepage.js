@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import firebase from "../public/firebase";
+import { useDrop } from "react-dnd";
 
 import styles from "../styles/Homepage.module.css";
 import Header from "../components/Header";
@@ -27,6 +28,13 @@ export default function Homepage() {
       setFolders(snap.val());
     });
   }, []);
+
+  const [, dropRef] = useDrop({
+    accept: "CARD",
+    hover: (item, monitor) => {
+      console.log(item, monitor);
+    },
+  });
 
   function createFolder(folderName) {
     let newFolders = folders;
@@ -69,7 +77,7 @@ export default function Homepage() {
               backBtn={() => setSelectedFolder(null)}
             />
             {selectedFolder === null && (
-              <div>
+              <div ref={dropRef}>
                 {folders.map((folder, index) => {
                   return (
                     <Foldercard
