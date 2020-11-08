@@ -1,22 +1,24 @@
 .homepageContainer {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   background-color: #fafafa;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(https://images.unsplash.com/photo-1520262454473-a1a82276a574?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
+  background-image: url(https://images.unsplash.com/photo-1495476479092-6ece1898a101?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
   background-size: cover;
+  box-shadow: 0px 0px 21px 15pxrgba (255, 255, 255, 1);
 }
 
 .homepageContent {
   position: relative;
   width: 100%;
-  max-width: 300px;
-  min-height: 500px;
+  max-width: 400px;
+  min-height: 600px;
   background-color: #171717;
   border-radius: 15px;
   padding: 1rem;
+  margin: 2rem 1rem;
 }
 
 .title {
@@ -41,4 +43,30 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+
+.addBtnOpen {
+  animation: rotateIn 0.4s ease forwards;
+}
+
+.addBtnClose {
+  animation: rotateOut 0.4s ease forwards;
+}
+
+@keyframes rotateIn {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(45deg);
+  }
+}
+
+@keyframes rotateOut {
+  from {
+    transform: rotate(45deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }

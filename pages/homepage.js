@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import firebase from "../public/firebase";
 
@@ -12,6 +12,7 @@ import Folder from "../components/Folder";
 export default function Homepage() {
   let userId;
   let dataRef;
+  const btnRef = useRef(null);
   if (typeof window !== "undefined") {
     userId = localStorage.getItem("@userId");
     dataRef = firebase.database();
@@ -97,7 +98,11 @@ export default function Homepage() {
               )}
             </div>
             <button
-              className={styles.addBtn}
+              className={
+                addFolderModal || addBookmarkModal
+                  ? styles.addBtn + " " + styles.addBtnOpen
+                  : styles.addBtn + " " + styles.addBtnClose
+              }
               onClick={() => {
                 if (selectedFolder !== null) {
                   setAddBookmarkModal(!addBookmarkModal);

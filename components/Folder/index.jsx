@@ -23,17 +23,19 @@ function Folder({ folder, folderIndex, dataRef }) {
   return (
     <div className={styles.folderContainer}>
       <h1 className={styles.folderTitle}>{folder.title}</h1>
-      {folder.bookmarks &&
-        folder.bookmarks.map((bookmark, index) => {
-          return (
-            <Bookmarkcard
-              title={bookmark.title}
-              url={bookmark.url}
-              deleteBtn={() => deleteBookmark(index)}
-              key={index}
-            />
-          );
-        })}
+      <div className={styles.bookmarksList}>
+        {folder.bookmarks &&
+          folder.bookmarks.map((bookmark, index) => {
+            return (
+              <Bookmarkcard
+                title={bookmark.title}
+                url={bookmark.url}
+                deleteBtn={() => deleteBookmark(index)}
+                key={index}
+              />
+            );
+          })}
+      </div>
     </div>
   );
 }
