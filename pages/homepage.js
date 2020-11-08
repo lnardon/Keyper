@@ -44,10 +44,13 @@ export default function Homepage() {
   }
 
   function deleteFolder(index) {
-    let newFolders = folders;
-    newFolders.splice(index, 1);
-    setFolders(newFolders);
-    dataRef.ref(`users/${userId}/folders/${index}`).remove();
+    let r = confirm("Click OK to delete the folder or Cancel to exit.");
+    if (r) {
+      let newFolders = folders;
+      newFolders.splice(index, 1);
+      setFolders(newFolders);
+      dataRef.ref(`users/${userId}/folders/${index}`).remove();
+    }
   }
 
   function createBookmark(bookmark) {
@@ -122,6 +125,9 @@ export default function Homepage() {
               +
             </button>
           </div>
+          {addBookmarkModal || addFolderModal ? (
+            <div className={styles.modalBg}></div>
+          ) : null}
         </div>
       ) : null}
     </>

@@ -16,7 +16,7 @@
   max-width: 400px;
   min-height: 600px;
   background-color: #171717;
-  border-radius: 15px;
+  border-radius: 1rem;
   padding: 1rem;
   margin: 2rem 1rem;
 }
@@ -43,6 +43,7 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  z-index: 10;
 }
 
 .addBtnOpen {
@@ -51,6 +52,17 @@
 
 .addBtnClose {
   animation: rotateOut 0.4s ease forwards;
+}
+
+.modalBg {
+  position: absolute;
+  width: calc(100% - 2rem);
+  max-width: 400px;
+  min-height: 600px;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 9;
+  border-radius: 1rem;
+  animation: appear 0.3s ease forwards;
 }
 
 @keyframes rotateIn {
@@ -68,5 +80,14 @@
   }
   to {
     transform: rotate(0deg);
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

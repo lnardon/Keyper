@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import styles from "../../styles/Folder.module.css";
 import Bookmarkcard from "../Bookmarkcard";
 
@@ -10,14 +8,17 @@ function Folder({ folder, folderIndex, dataRef }) {
   }
 
   function deleteBookmark(index) {
-    let folders;
-    let auxBookmarks = folder.bookmarks;
-    dataRef.ref(`users/${userId}/folders`).on("value", (snap) => {
-      folders = snap.val();
-    });
-    auxBookmarks.splice(index, 1);
-    folders[folderIndex].bookmarks = auxBookmarks;
-    dataRef.ref(`users/${userId}/folders`).set(folders);
+    let r = confirm("Click OK to delete the bookmark or Cancel to exit.");
+    if (r) {
+      let folders;
+      let auxBookmarks = folder.bookmarks;
+      dataRef.ref(`users/${userId}/folders`).on("value", (snap) => {
+        folders = snap.val();
+      });
+      auxBookmarks.splice(index, 1);
+      folders[folderIndex].bookmarks = auxBookmarks;
+      dataRef.ref(`users/${userId}/folders`).set(folders);
+    }
   }
 
   return (

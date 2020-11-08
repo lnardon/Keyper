@@ -13,7 +13,7 @@
 }
 
 .foldercardContainer:hover {
-  background-color: #ddd4f8;
+  border-bottom: 1px solid #131313;
 }
 
 .foldercardTitle {
