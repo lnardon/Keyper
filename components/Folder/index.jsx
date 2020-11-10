@@ -25,12 +25,14 @@ function Folder({ folder, folderIndex, dataRef }) {
 
   function reOrganizeList(props) {
     const source = props.source.index;
-    const destination = props.destination.index;
-    folder.bookmarks.splice(
-      destination,
-      0,
-      folder.bookmarks.splice(source, 1)[0]
-    );
+    const destination = props.destination?.index;
+    if (destination) {
+      folder.bookmarks.splice(
+        destination,
+        0,
+        folder.bookmarks.splice(source, 1)[0]
+      );
+    }
   }
 
   return (

@@ -10,6 +10,14 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged(function (user) {
+      if (user) {
+        router.push("/homepage");
+      }
+    });
+  }, []);
+
   return (
     <div className={styles.loginContainer}>
       <Head>
@@ -50,7 +58,10 @@ export default function Login() {
           onClick={() =>
             firebase
               .auth()
-              .signInWithEmailAndPassword(username, password)
+              .setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+              .then(() =>
+                firebase.auth().signInWithEmailAndPassword(username, password)
+              )
               .then((data) => {
                 if (typeof window !== "undefined") {
                   localStorage.setItem("@userId", data.user.uid);
