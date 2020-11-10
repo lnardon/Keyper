@@ -28,6 +28,15 @@
   font-weight: 700;
 }
 
+.logoutBtn {
+  width: 20px;
+  position: absolute;
+  right: 1rem;
+  filter: invert(100%);
+  cursor: pointer;
+  outline: none;
+}
+
 @keyframes appear {
   from {
     opacity: 0;
