@@ -1,7 +1,7 @@
 import styles from "../../styles/Bookmarkcard.module.css";
 import close from "../../public/close.svg";
 
-function Bookmarkcard({ title, url, deleteBtn }) {
+function Bookmarkcard({ title, url, deleteBtn, dragHandle }) {
   return (
     <div className={styles.foldercardContainer}>
       <div
@@ -12,6 +12,7 @@ function Bookmarkcard({ title, url, deleteBtn }) {
           src={`https://s2.googleusercontent.com/s2/favicons?domain=${url}`}
           alt="Favicon"
           className={styles.favicon}
+          {...dragHandle}
         />
         <h1 className={styles.foldercardTitle}>{title}</h1>
       </div>
