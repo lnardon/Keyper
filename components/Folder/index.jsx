@@ -38,6 +38,7 @@ function Folder({ folder, folderIndex, dataRef }) {
   return (
     <div className={styles.folderContainer}>
       <h1 className={styles.folderTitle}>{folder.title}</h1>
+      <div className={styles.folderTitleLine}></div>
       <DragDropContext onDragEnd={(props) => reOrganizeList(props)}>
         <Droppable droppableId="droppable-1">
           {(provided, snapshot) => (
@@ -52,11 +53,12 @@ function Folder({ folder, folderIndex, dataRef }) {
                     <Draggable
                       draggableId={`${index}`}
                       index={index}
-                      key={index}
+                      key={index + bookmark.title}
                     >
                       {(provided, snapshot) => (
                         <div
                           ref={provided.innerRef}
+                          className={styles.bookmarkCardDiv}
                           {...provided.draggableProps}
                         >
                           <Bookmarkcard
@@ -64,6 +66,7 @@ function Folder({ folder, folderIndex, dataRef }) {
                             url={bookmark.url}
                             deleteBtn={() => deleteBookmark(index)}
                             dragHandle={provided.dragHandleProps}
+                            index={index}
                           />
                         </div>
                       )}

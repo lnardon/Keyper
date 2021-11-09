@@ -1,10 +1,13 @@
 .foldercardContainer {
+  opacity: 0;
   width: 100%;
+  height: 38px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   background-color: #fafafa;
   border-radius: 0.25rem;
-  padding: 0.25rem 0rem;
+  padding: 0.25rem 0.5rem;
   margin-bottom: 0.5rem;
   position: relative;
   animation: appear 0.5s ease forwards;
@@ -17,21 +20,27 @@
 }
 
 .favicon {
-  margin: 0rem 0.5rem;
-  cursor: pointer !important;
+  height: 20px;
+  margin: 0.25rem 0.5rem 0.25rem 0.25rem;
 }
 
 .foldercardTitle {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.125rem;
+  line-height: 1.125rem;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 70%;
+  align-self: center;
 }
 
 .deleteBtn {
-  height: 50%;
-  right: 0.5rem;
-  position: absolute;
+  height: 0.75rem;
   outline: none;
   cursor: pointer !important;
+  margin-right: 0.25rem;
 }
 
 @keyframes appear {
