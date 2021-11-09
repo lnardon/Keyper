@@ -8,6 +8,7 @@ import Foldercard from "../components/Foldercard";
 import AddFolderModal from "../components/AddFolderModal";
 import AddBookmarkModal from "../components/AddBookmarkModal";
 import Folder from "../components/Folder";
+import closeIcon from "../public/assets/close.png";
 
 export default function Homepage() {
   let userId;
@@ -63,7 +64,7 @@ export default function Homepage() {
       {folders.length > 0 ? (
         <div className={styles.homepageContainer}>
           <Head>
-            <title>Keyper</title>
+            <title>Keyper Bookmarks</title>
           </Head>
           <div className={styles.homepageContent}>
             <Header
@@ -73,7 +74,7 @@ export default function Homepage() {
                 firebase
                   .auth()
                   .signOut()
-                  .then(() => window.location.reload())
+                  .then(() => window.open(window.location.origin, "_self"))
               }
             />
             {selectedFolder === null && (
@@ -81,6 +82,7 @@ export default function Homepage() {
                 {folders.map((folder, index) => {
                   return (
                     <Foldercard
+                      key={index}
                       title={folder.title}
                       onClick={() => setSelectedFolder(index)}
                       index={index}
@@ -119,7 +121,11 @@ export default function Homepage() {
                 }
               }}
             >
-              +
+              <img
+                className={styles.addIcon}
+                src={closeIcon}
+                alt="Add button"
+              />
             </button>
           </div>
           {addBookmarkModal || addFolderModal ? (

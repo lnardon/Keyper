@@ -1,24 +1,23 @@
 .homepageContainer {
   width: 100%;
+  min-width: 300px;
   min-height: 100%;
-  background-color: #fafafa;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-image: url(https://images.unsplash.com/photo-1495476479092-6ece1898a101?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-  background-size: cover;
-  box-shadow: 0px 0px 21px 15pxrgba (255, 255, 255, 1);
 }
 
 .homepageContent {
   position: relative;
   width: 100%;
   max-width: 400px;
-  min-height: 600px;
+  height: 600px;
   background-color: #171717;
   border-radius: 1rem;
-  padding: 1rem;
+  padding: 2rem;
   margin: 2rem 1rem;
+  box-shadow: 0px 0px 11px 7px rgba(0, 0, 0, 0.25);
+  border: 1px solid #f1f1f1;
 }
 
 .title {
@@ -26,24 +25,29 @@
 }
 
 .addBtn {
+  display: flex;
+  justify-content: center;
   position: absolute;
-  left: 1rem;
-  bottom: 1rem;
-  width: 50px;
-  height: 50px;
+  left: 2rem;
+  bottom: 2rem;
   color: #fafafa;
   background-color: #5200ff;
   border-radius: 50%;
   border: none;
   outline: none;
   cursor: pointer;
-  font-size: 2rem;
-  font-weight: 900;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
   z-index: 10;
+  padding: 1rem;
+}
+
+.addIcon {
+  width: 20px;
+  height: 20px;
+  filter: invert(100%);
 }
 
 .addBtnOpen {
@@ -67,19 +71,19 @@
 
 @keyframes rotateIn {
   from {
-    transform: rotate(0deg);
+    transform: rotate(-45deg);
   }
   to {
-    transform: rotate(45deg);
+    transform: rotate(0deg);
   }
 }
 
 @keyframes rotateOut {
   from {
-    transform: rotate(45deg);
+    transform: rotate(0deg);
   }
   to {
-    transform: rotate(0deg);
+    transform: rotate(-45deg);
   }
 }
 
