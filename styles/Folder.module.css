@@ -1,10 +1,22 @@
 .folderContainer {
   width: 100%;
+  margin-bottom: 4rem;
+}
+
+.bookmarkCardDiv:last-child {
+  margin-bottom: 2rem;
 }
 
 .folderTitle {
   color: #fafafa;
-  border-bottom: 2px solid #5200ff;
+  margin-bottom: 0.125rem;
+}
+
+.folderTitleLine {
+  height: 3px;
+  animation: loadStripe 0.7s ease forwards;
+  background-color: #5200ff;
+  margin-bottom: 1rem;
 }
 
 .bookmarksList {
@@ -16,4 +28,13 @@
 
 .bookmarksList::-webkit-scrollbar {
   display: none;
+}
+
+@keyframes loadStripe {
+  from {
+    width: 0;
+  }
+  to {
+    width: 150px;
+  }
 }
