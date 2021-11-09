@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Head from "next/head";
 import firebase from "../public/firebase";
 
@@ -59,6 +60,14 @@ export default function Homepage() {
     setAddBookmarkModal(false);
   }
 
+  function reOrganizeList(props) {
+    const source = props.source.index;
+    const destination = props.destination?.index;
+    if (destination) {
+      folders.splice(destination, 0, folders.splice(source, 1)[0]);
+    }
+  }
+
   return (
     <>
       {folders.length > 0 ? (
@@ -77,24 +86,50 @@ export default function Homepage() {
                   .then(() => window.open(window.location.origin, "_self"))
               }
             />
-            {selectedFolder === null && (
-              <div>
-                {folders.map((folder, index) => {
-                  return (
-                    <Foldercard
-                      key={index}
-                      title={folder.title}
-                      onClick={() => setSelectedFolder(index)}
-                      index={index}
-                      deleteBtn={() => deleteFolder(index)}
-                    />
-                  );
-                })}
-                {addFolderModal && (
-                  <AddFolderModal createFolder={createFolder} />
+            <DragDropContext onDragEnd={(props) => reOrganizeList(props)}>
+              <Droppable droppableId="droppable-2">
+                {(provided, snapshot) => (
+                  <div
+                    ref={provided.innerRef}
+                    className={styles.bookmarksList}
+                    {...provided.droppableProps}
+                  >
+                    {selectedFolder === null && (
+                      <div>
+                        {folders.map((folder, index) => {
+                          return (
+                            <Draggable
+                              draggableId={`${index}`}
+                              index={index}
+                              key={index + folder.title}
+                            >
+                              {(provided, snapshot) => (
+                                <div
+                                  ref={provided.innerRef}
+                                  className={styles.bookmarkCardDiv}
+                                  {...provided.draggableProps}
+                                >
+                                  <Foldercard
+                                    key={index}
+                                    title={folder.title}
+                                    onClick={() => setSelectedFolder(index)}
+                                    index={index}
+                                    dragHandle={provided.dragHandleProps}
+                                    deleteBtn={() => deleteFolder(index)}
+                                  />
+                                </div>
+                              )}
+                            </Draggable>
+                          );
+                        })}
+                      </div>
+                    )}
+                    {provided.placeholder}
+                  </div>
                 )}
-              </div>
-            )}
+              </Droppable>
+            </DragDropContext>
+            {addFolderModal && <AddFolderModal createFolder={createFolder} />}
             <div>
               {addBookmarkModal && (
                 <AddBookmarkModal createBookmark={createBookmark} />
