@@ -100,7 +100,7 @@ export default function Homepage() {
                 {(provided) => (
                   <div ref={provided.innerRef} {...provided.droppableProps}>
                     {selectedFolder === null && (
-                      <div>
+                      <div style={{ marginTop: "2rem" }}>
                         {folders.map((folder, index) => {
                           return (
                             <Draggable

@@ -13,7 +13,7 @@
   z-index: 10;
   animation: modalAppear 0.5s ease-out forwards;
   padding: 2rem;
-  border: 3px solid #212121;
+  border: 3px solid #171717;
 }
 
 .title {
@@ -22,6 +22,7 @@
   line-height: 2rem;
   text-align: center;
   margin: 0rem 0rem 1rem 0rem;
+  color: #171717;
 }
 
 .inputLabel {
