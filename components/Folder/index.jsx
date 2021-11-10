@@ -32,6 +32,9 @@ function Folder({ folder, folderIndex, dataRef }) {
         0,
         folder.bookmarks.splice(source, 1)[0]
       );
+      dataRef
+        .ref(`users/${userId}/folders/${folderIndex}/bookmarks`)
+        .set(folder.bookmarks);
     }
   }
 

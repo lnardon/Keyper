@@ -73,6 +73,7 @@ export default function Homepage() {
     const destination = props.destination?.index;
     if (destination) {
       folders.splice(destination, 0, folders.splice(source, 1)[0]);
+      dataRef.ref(`users/${userId}/folders/`).set(folders);
     }
   }
 
