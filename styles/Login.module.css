@@ -5,30 +5,37 @@
   align-items: center;
   justify-content: center;
   color: #fafafa;
-  background-image: url(https://images.unsplash.com/photo-1495476479092-6ece1898a101?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80);
-  background-size: cover;
 }
 
 .loginDiv {
-  padding: 3rem;
+  padding: 4rem;
   border-radius: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: #191919;
-  box-shadow: 0px 0px 21px 1px rgba(255, 255, 255, 0.25);
   animation: loginAppear 0.3s ease-in-out forwards;
+  border: 2px solid #fafafa;
+}
+
+.title {
+  font-size: 3rem;
+  margin: 0rem 0rem 2rem 0rem;
+}
+
+.loginForm {
+  margin-bottom: 1rem;
 }
 
 .inputDiv {
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .input {
   background-color: transparent;
-  padding: 0.25rem;
-  border: none;
-  border-bottom: 2px solid #5100ffe7;
+  padding: 0.5rem;
+  border: 2px solid #5100ffe7;
+  border-radius: 0.25rem;
   outline: none;
   font-size: 1rem;
   color: #fafafa;
@@ -36,7 +43,9 @@
 
 .loginBtn {
   border: none;
-  padding: 0.5rem 2rem;
+  padding: 1rem 0rem;
+  width: 100%;
+  border-radius: 0.25rem;
   cursor: pointer;
   outline: none;
   background-color: #5200ff;
@@ -46,26 +55,11 @@
 }
 
 .createAccountLink {
-  margin-top: 2rem;
+  margin: 2rem 0rem 0rem 0rem;
   text-decoration: none;
   color: #fafafa;
+  cursor: pointer;
 }
-/* .pathTop {
-  position: absolute;
-  clip-path: circle(15% at 0 0);
-  width: 100%;
-  height: 100%;
-  background-color: #131313;
-  animation: circleGrow 1.5s ease-in-out forwards 0.5s;
-} */
-
-/* .pathBottom {
-  position: absolute;
-  clip-path: circle(10% at 100% 0%);
-  width: 100%;
-  height: 100%;
-  background-color: #131313;
-} */
 
 @keyframes circleGrow {
   from {
