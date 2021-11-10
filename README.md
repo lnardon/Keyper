@@ -21,4 +21,4 @@ Save, organize and access your bookmarks from anywhere.
 - Reactjs
 - Firebase Hosting and Databse
 - Javascript Drag and Drop
-- Css Animations
+- CSS Animations

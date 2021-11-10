@@ -22,6 +22,7 @@ export default function Login() {
     <div className={styles.loginContainer}>
       <Head>
         <title>Keyper - Login</title>
+        <link rel="shortcut icon" href="../public/assets/bookmark.png" />
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"

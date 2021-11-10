@@ -21,7 +21,7 @@ export default function Login() {
   return (
     <div className={styles.loginContainer}>
       <Head>
-        <title>Keyper - Login</title>
+        <title>Keyper - Sign Up</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap"
           rel="stylesheet"
