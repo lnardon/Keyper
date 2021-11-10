@@ -7,7 +7,7 @@ function Foldercard({ title, onClick, deleteBtn, index, dragHandle }) {
   const folderCardRef = useRef();
 
   useEffect(() => {
-    folderCardRef.current.style.animationDelay = `${index * 100}ms`;
+    folderCardRef.current.style.animationDelay = `${index * 75}ms`;
   }, [folderCardRef]);
 
   return (

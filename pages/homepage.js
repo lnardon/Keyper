@@ -79,21 +79,18 @@ export default function Homepage() {
             <Header
               showBackBtn={selectedFolder !== null}
               backBtn={() => setSelectedFolder(null)}
-              logoutBtn={() =>
+              logoutBtn={() => {
+                localStorage.removeItem("@userId");
                 firebase
                   .auth()
                   .signOut()
-                  .then(() => window.open(window.location.origin, "_self"))
-              }
+                  .then(() => window.open(window.location.origin, "_self"));
+              }}
             />
             <DragDropContext onDragEnd={(props) => reOrganizeList(props)}>
               <Droppable droppableId="droppable-2">
-                {(provided, snapshot) => (
-                  <div
-                    ref={provided.innerRef}
-                    className={styles.bookmarksList}
-                    {...provided.droppableProps}
-                  >
+                {(provided) => (
+                  <div ref={provided.innerRef} {...provided.droppableProps}>
                     {selectedFolder === null && (
                       <div>
                         {folders.map((folder, index) => {
@@ -101,16 +98,14 @@ export default function Homepage() {
                             <Draggable
                               draggableId={`${index}`}
                               index={index}
-                              key={index + folder.title}
+                              key={index}
                             >
-                              {(provided, snapshot) => (
+                              {(provided) => (
                                 <div
                                   ref={provided.innerRef}
-                                  className={styles.bookmarkCardDiv}
                                   {...provided.draggableProps}
                                 >
                                   <Foldercard
-                                    key={index}
                                     title={folder.title}
                                     onClick={() => setSelectedFolder(index)}
                                     index={index}

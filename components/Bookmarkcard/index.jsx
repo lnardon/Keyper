@@ -7,7 +7,7 @@ function Bookmarkcard({ title, url, deleteBtn, dragHandle, index }) {
   const bookmarkCardRef = useRef();
 
   useEffect(() => {
-    bookmarkCardRef.current.style.animationDelay = `${index * 100}ms`;
+    bookmarkCardRef.current.style.animationDelay = `${index * 75}ms`;
   }, [bookmarkCardRef]);
 
   return (
