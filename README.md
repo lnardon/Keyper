@@ -11,8 +11,9 @@ Save, organize and access your bookmarks from anywhere.
 ### Available Features:
 
 - Signup/Login
-- Folder/Bookmark creation and eletion
-- Folders and Bookmarks
+- Folder/Bookmark creation and deletion
+- Folders and Bookmarks reorganization
+- Click on bookmark card to open it in a new window
 
 ### What was used on this project
 
