@@ -12,11 +12,16 @@
   align-items: center;
   z-index: 10;
   animation: modalAppear 0.5s ease-out forwards;
-  padding: 0.5rem 0rem;
+  padding: 2rem;
+  border: 3px solid #212121;
 }
 
 .title {
-  font-size: 1.5rem;
+  width: 100%;
+  font-size: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  margin: 0rem 0rem 1rem 0rem;
 }
 
 .inputLabel {
@@ -25,26 +30,28 @@
 }
 
 .input {
-  width: 80%;
+  width: 100%;
   background-color: transparent;
-  border: none;
-  border-bottom: 2px solid #5200ff;
-  margin-bottom: 1rem;
+  border-radius: 0.25rem;
   outline: none;
   font-size: 1rem;
+  line-height: 1rem;
+  font-weight: 500;
+  padding: 0.5rem;
+  border: none;
 }
 
 .createBtn {
+  width: 100%;
   outline: none;
   border: none;
   cursor: pointer;
   background-color: #5200ff;
-  padding: 0.25rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 600;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
   color: #fafafa;
   border-radius: 0.25rem;
-  margin-bottom: 1rem;
 }
 
 @keyframes modalAppear {

@@ -17,7 +17,7 @@
   padding: 2rem;
   margin: 2rem 1rem;
   box-shadow: 0px 0px 11px 7px rgba(0, 0, 0, 0.25);
-  border: 1px solid #f1f1f1;
+  border: 1px solid #f3f3f3;
 }
 
 .title {
@@ -30,7 +30,6 @@
   position: absolute;
   left: 2rem;
   bottom: 2rem;
-  color: #fafafa;
   background-color: #5200ff;
   border-radius: 50%;
   border: none;
@@ -42,6 +41,7 @@
   user-select: none;
   z-index: 10;
   padding: 1rem;
+  animation: appear 1s ease forwards;
 }
 
 .addIcon {
@@ -67,6 +67,7 @@
   z-index: 9;
   border-radius: 1rem;
   animation: appear 0.3s ease forwards;
+  border: none;
 }
 
 @keyframes rotateIn {
@@ -93,5 +94,14 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@keyframes addBtnPopUp {
+  from {
+    transform: scale(0.7);
+  }
+  to {
+    transform: scale(1);
   }
 }
