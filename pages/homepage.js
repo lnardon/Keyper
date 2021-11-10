@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import Head from "next/head";
 import firebase from "../public/firebase";
@@ -22,10 +23,17 @@ export default function Homepage() {
   const [addBookmarkModal, setAddBookmarkModal] = useState(false);
   const [folders, setFolders] = useState([]);
   const [selectedFolder, setSelectedFolder] = useState(null);
+  const router = useRouter();
 
   useEffect(() => {
     dataRef.ref(`users/${userId}/folders`).on("value", (snap) => {
       setFolders(snap.val());
+    });
+
+    firebase.auth().onAuthStateChanged((user) => {
+      if (!user) {
+        router.push("/");
+      }
     });
   }, []);
 

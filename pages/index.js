@@ -11,7 +11,7 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged(function (user) {
+    firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         router.push("/homepage");
       }

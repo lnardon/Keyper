@@ -10,6 +10,14 @@ export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  useEffect(() => {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        router.push("/homepage");
+      }
+    });
+  }, []);
+
   return (
     <div className={styles.loginContainer}>
       <Head>
