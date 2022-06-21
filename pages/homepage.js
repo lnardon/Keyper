@@ -38,7 +38,7 @@ export default function Homepage() {
   }, []);
 
   function createFolder(folderName) {
-    let newFolders = folders;
+    let newFolders = folders || [];
     newFolders.push({ title: folderName, bookmarks: [] });
     dataRef.ref(`users/${userId}/folders`).set(newFolders);
     setAddFolderModal(false);
@@ -79,23 +79,23 @@ export default function Homepage() {
 
   return (
     <>
-      {folders.length > 0 ? (
-        <div className={styles.homepageContainer}>
-          <Head>
-            <title>Keyper Bookmarks</title>
-          </Head>
-          <div className={styles.homepageContent}>
-            <Header
-              showBackBtn={selectedFolder !== null}
-              backBtn={() => setSelectedFolder(null)}
-              logoutBtn={() => {
-                localStorage.removeItem("@userId");
-                firebase
-                  .auth()
-                  .signOut()
-                  .then(() => window.open(window.location.origin, "_self"));
-              }}
-            />
+      <div className={styles.homepageContainer}>
+        <Head>
+          <title>Keyper Bookmarks</title>
+        </Head>
+        <div className={styles.homepageContent}>
+          <Header
+            showBackBtn={selectedFolder !== null}
+            backBtn={() => setSelectedFolder(null)}
+            logoutBtn={() => {
+              localStorage.removeItem("@userId");
+              firebase
+                .auth()
+                .signOut()
+                .then(() => window.open(window.location.origin, "_self"));
+            }}
+          />
+          {folders?.length > 0 ? (
             <DragDropContext onDragEnd={(props) => reOrganizeList(props)}>
               <Droppable droppableId="droppable-2">
                 {(provided) => (
@@ -133,45 +133,41 @@ export default function Homepage() {
                 )}
               </Droppable>
             </DragDropContext>
-            {addFolderModal && <AddFolderModal createFolder={createFolder} />}
-            <div>
-              {addBookmarkModal && (
-                <AddBookmarkModal createBookmark={createBookmark} />
-              )}
-              {selectedFolder !== null && (
-                <Folder
-                  folder={folders[selectedFolder]}
-                  folderIndex={selectedFolder}
-                  dataRef={dataRef}
-                />
-              )}
-            </div>
-            <button
-              className={
-                addFolderModal || addBookmarkModal
-                  ? styles.addBtn + " " + styles.addBtnOpen
-                  : styles.addBtn + " " + styles.addBtnClose
-              }
-              onClick={() => {
-                if (selectedFolder !== null) {
-                  setAddBookmarkModal(!addBookmarkModal);
-                } else {
-                  setAddFolderModal(!addFolderModal);
-                }
-              }}
-            >
-              <img
-                className={styles.addIcon}
-                src={closeIcon}
-                alt="Add button"
-              />
-            </button>
-          </div>
-          {addBookmarkModal || addFolderModal ? (
-            <div className={styles.modalBg}></div>
           ) : null}
+          {addFolderModal && <AddFolderModal createFolder={createFolder} />}
+          <div>
+            {addBookmarkModal && (
+              <AddBookmarkModal createBookmark={createBookmark} />
+            )}
+            {selectedFolder !== null && (
+              <Folder
+                folder={folders[selectedFolder]}
+                folderIndex={selectedFolder}
+                dataRef={dataRef}
+              />
+            )}
+          </div>
+          <button
+            className={
+              addFolderModal || addBookmarkModal
+                ? styles.addBtn + " " + styles.addBtnOpen
+                : styles.addBtn + " " + styles.addBtnClose
+            }
+            onClick={() => {
+              if (selectedFolder !== null) {
+                setAddBookmarkModal(!addBookmarkModal);
+              } else {
+                setAddFolderModal(!addFolderModal);
+              }
+            }}
+          >
+            <img className={styles.addIcon} src={closeIcon} alt="Add button" />
+          </button>
         </div>
-      ) : null}
+        {addBookmarkModal || addFolderModal ? (
+          <div className={styles.modalBg}></div>
+        ) : null}
+      </div>
     </>
   );
 }
